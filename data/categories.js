@@ -1,0 +1,66 @@
+export const categories = [
+    {
+      id: "all",
+      name_zh: "全部分类",
+      name_en: "All Categories",
+      slug: "all",
+      icon: "",
+    },
+    {
+      id: "display",
+      name_zh: "展示类型",
+      name_en: "Display Type",
+      slug: "display-type",
+      icon: "",
+    },
+    {
+      id: "ecommerce",
+      name_zh: "电子商务",
+      name_en: "E-commerce",
+      slug: "ecommerce",
+      icon: "",
+    },
+    {
+      id: "oa",
+      name_zh: "OA",
+      name_en: "Office Automation",
+      slug: "office-automation",
+      icon: "",
+    },
+    {
+      id: "inventory",
+      name_zh: "库存管理",
+      name_en: "Inventory Management",
+      slug: "inventory-management",
+      icon: "",
+    },
+    {
+      id: "multi-vendor",
+      name_zh: "多供应商电子商务",
+      name_en: "Multi-vendor E-commerce",
+      slug: "multi-vendor",
+      icon: "",
+    },
+    {
+      id: "services",
+      name_zh: "服务",
+      name_en: "Services",
+      slug: "services",
+      icon: "",
+    },
+    {
+      id: "social",
+      name_zh: "社交媒体",
+      name_en: "Social Media",
+      slug: "social-media",
+      icon: "",
+    },
+    {
+      id: "others",
+      name_zh: "其他",
+      name_en: "Others",
+      slug: "others",
+      icon: "",
+    },
+  ];
+  
