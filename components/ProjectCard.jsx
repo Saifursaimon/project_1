@@ -17,7 +17,7 @@ const ProjectCard = ({p}) => {
     <p className="font-medium text-lg">
       {p.name}
     </p>
-    <div className="bg-[#bdbdbd] h-8 w-28 rounded-full text-center py-1 text-base">
+    <div className="bg-[#bdbdbd] h-8 w-28 rounded-full text-center py-1 text-base overflow-hidden whitespace-nowrap text-ellipsis px-1">
       {p.category}
     </div>
     </div>
