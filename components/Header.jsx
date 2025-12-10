@@ -7,6 +7,8 @@ import React from "react";
 const Header = () => {
   const pathname = usePathname();
 
+  const isProjectDetails = pathname.startsWith("/project/");
+
   const navItems = [
     {
       name: "产品展示",
@@ -43,6 +45,15 @@ const Header = () => {
               </Link>
             );
           })}
+
+          {isProjectDetails && (
+            <Link
+              href={pathname}
+              className={`font-medium transition text-black`}
+            >
+              项目详情
+            </Link>
+          )}
         </div>
       </div>
     </div>
