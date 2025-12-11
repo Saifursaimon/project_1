@@ -2,7 +2,7 @@ import { categories } from "@/data/categories";
 
 const Sidebar = ({ selectedCategory, onSelectCategory }) => {
   return (
-    <div className=" w-[262px] bg-[#f8f8f8] pt-[34px] ">
+    <div className="  bg-[#f8f8f8] pt-[34px] ">
       <div className="flex flex-col gap-5">
         {categories.map((c) => {
           return (

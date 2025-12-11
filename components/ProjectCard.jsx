@@ -4,7 +4,7 @@ import React from 'react'
 
 const ProjectCard = ({p}) => {
   return (
-    <Link href={`/project/${p.id}`} key={p.id} className="w-[364px] h-72 bg-[#d9d9d9]  transition-all duration-300 
+    <Link href={`/project/${p.id}`} key={p.id} className="h-72 bg-[#d9d9d9]  transition-all duration-300 
     hover:bg-[#cfcfcf] hover:scale-[1.01] cursor-pointer">
     <div className='overflow-hidden'>
       <Image src={p.thmbnl} height={203} width={365} alt="images"  className="
