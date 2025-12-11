@@ -69,12 +69,119 @@ const Step1 = () => {
               </div>
               <div className="flex items-start gap-12 mt-9">
                 <p className="whitespace-nowrap">备注: </p>
-              <textarea
-                {...register("basicInfo.remark")}
-               
-                className="border p-3 w-full rounded-lg"
-              />
+                <textarea
+                  {...register("basicInfo.remark")}
+                  className="border p-3 w-full rounded-lg"
+                />
+              </div>
             </div>
+          </div>
+          <div className="flex items-center gap-12 mt-11">
+            <h3 className="font-medium text-[22px]">核心对接人：</h3>
+            <div>
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-8">
+                  <label>姓名：</label>
+                  <input
+                    className="bg-[#f5f6f8] px-6 py-3.5 rounded-lg"
+                    type="text"
+                    placeholder="请填写客户姓名"
+                    {...register("basicInfo.contactPerson.name")}
+                  />
+                </div>
+                <div className="flex items-center gap-8">
+                  <label htmlFor="position">职务：</label>
+                  <select
+                    id="position"
+                    {...register("basicInfo.contactPerson.position")}
+                    className="bg-[#f5f6f8] px-8 py-3.5 rounded-lg"
+                  >
+                    <option defaultChecked value="">
+                      请选择职务
+                    </option>
+                    <option value="经理">经理</option>
+                    <option value="主管">主管</option>
+                    <option value="专员">专员</option>
+                    <option value="其他">其他</option>
+                  </select>
+                </div>
+                <div className="flex items-center gap-8">
+                  <label>电话：</label>
+                  <input
+                    className="bg-[#f5f6f8] px-6 py-3.5 rounded-lg"
+                    type="number"
+                    placeholder="请输入联系方式"
+                    {...register("basicInfo.contactPerson.phone")}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-12 mt-14">
+            <h3 className="font-medium text-[22px]">合作背景：</h3>
+            <div>
+              <div className="flex items-center gap-12 ">
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    {...register("basicInfo.collab.firstTime")}
+                  />
+                  <label>首次合作 </label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    {...register("basicInfo.collab.repeat")}
+                  />
+                  <label>复购 </label>
+                </div>
+
+                <div className="flex items-center gap-8 ">
+                  <label className="whitespace-nowrap">历史项目：</label>
+                  <input
+                    className="bg-[#f5f6f8] px-6 py-3.5 rounded-lg w-full"
+                    type="text"
+                    placeholder="请填写历史合作或项目编号"
+                    {...register("basicInfo.collab.projectHistory")}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-12 mt-14">
+            <h3 className="font-medium text-[22px]">洽谈方式/平台：</h3>
+            <div>
+              <div className="flex items-center gap-20">
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    {...register("basicInfo.discussionPlatform.companyOffice")}
+                  />
+                  <label>公司办公室 </label>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    {...register("basicInfo.discussionPlatform.clientOffice")}
+                  />
+                  <label>客户办公室 </label>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    {...register("basicInfo.discussionPlatform.videoCall")}
+                  />
+                  <label>远程视频 </label>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    {...register("basicInfo.discussionPlatform.other")}
+                  />
+                  <label>其他 </label>
+                </div>
+              </div>
             </div>
           </div>
         </div>

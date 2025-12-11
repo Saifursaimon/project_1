@@ -5,6 +5,9 @@ import PinLogin from "@/components/PinLogin";
 import { useRouter } from "next/navigation";
 import Step1 from "@/components/records/Step1";
 import { FormProvider, useForm } from "react-hook-form";
+import Step2 from "@/components/records/Step2";
+import Step3 from "@/components/records/Step3";
+import Step4 from "@/components/records/Step4";
 
 export default function RecordsPage() {
   const router = useRouter();
@@ -92,9 +95,9 @@ export default function RecordsPage() {
 
         {/* Step content */}
         {step === 0 && <Step1 />}
-        {step === 1 && <div>2...</div>}
-        {step === 2 && <div>3...</div>}
-        {step === 3 && <div>last...</div>}
+        {step === 1 && <Step2/>}
+        {step === 2 && <Step3/>}
+        {step === 3 && <Step4/>}
 
         <div className="w-full flex justify-end">
           <div className="mt-5 flex gap-3">
