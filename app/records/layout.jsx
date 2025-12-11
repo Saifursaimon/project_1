@@ -3,7 +3,7 @@ import React from "react";
 
 const layout = ({ children }) => {
   return (
-    <div className="bg-[#f5f6f8] h-screen">
+    <div className="bg-[#f5f6f8] h-full">
       <Header />
       <main className="max-w-[1414] mx-auto ">{children}</main>
     </div>
