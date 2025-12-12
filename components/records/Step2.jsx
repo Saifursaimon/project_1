@@ -5,7 +5,9 @@ import { useFormContext } from "react-hook-form";
 const Step2 = () => {
   const { register } = useFormContext();
   return (
-    <div className="mt-9 w-full bg-white p-6">
+    <div className="mt-14">
+      <h1 className="text-4xl font-medium">核心需求明细</h1>
+      <div className="mt-9 w-full bg-white p-6">
       <div>
         <h2 className="font-medium text-[26px]">1、项目介绍</h2>
         <div className="flex items-start gap-14 mt-14">
@@ -306,6 +308,8 @@ const Step2 = () => {
         </div>
       </div>
     </div>
+    </div>
+    
   );
 };
 
