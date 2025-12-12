@@ -10,8 +10,8 @@ const Step1 = () => {
         <h3 className="font-medium text-2xl">客户信息</h3>
         <div className="mt-16 p-2">
           <div className="flex items-start gap-12">
-            <h3 className="font-medium text-[22px]">客户全称/类型：</h3>
-            <div>
+            <h3 className="font-medium text-[22px] w-1/5">客户全称/类型：</h3>
+            <div className="w-3/4">
               <div className="flex items-start gap-14">
                 <div>
                   <div className="flex items-center gap-6">
@@ -77,11 +77,11 @@ const Step1 = () => {
             </div>
           </div>
           <div className="flex items-center gap-12 mt-11">
-            <h3 className="font-medium text-[22px]">核心对接人：</h3>
-            <div>
+            <h3 className="font-medium text-[22px] w-1/5">核心对接人：</h3>
+            <div className="w-3/4">
               <div className="flex items-center gap-6">
-                <div className="flex items-center gap-8">
-                  <label>姓名：</label>
+                <div className="flex items-center gap-6">
+                  <label className="whitespace-nowrap">姓名：</label>
                   <input
                     className="bg-[#f5f6f8] px-6 py-3.5 rounded-lg"
                     type="text"
@@ -89,8 +89,10 @@ const Step1 = () => {
                     {...register("basicInfo.contactPerson.name")}
                   />
                 </div>
-                <div className="flex items-center gap-8">
-                  <label htmlFor="position">职务：</label>
+                <div className="flex items-center gap-6">
+                  <label htmlFor="position" className="whitespace-nowrap">
+                    职务：
+                  </label>
                   <select
                     id="position"
                     {...register("basicInfo.contactPerson.position")}
@@ -105,8 +107,8 @@ const Step1 = () => {
                     <option value="其他">其他</option>
                   </select>
                 </div>
-                <div className="flex items-center gap-8">
-                  <label>电话：</label>
+                <div className="flex items-center gap-6">
+                  <label className="whitespace-nowrap">电话：</label>
                   <input
                     className="bg-[#f5f6f8] px-6 py-3.5 rounded-lg"
                     type="number"
@@ -118,8 +120,8 @@ const Step1 = () => {
             </div>
           </div>
           <div className="flex items-center gap-12 mt-14">
-            <h3 className="font-medium text-[22px]">合作背景：</h3>
-            <div>
+            <h3 className="font-medium text-[22px] w-1/5">合作背景：</h3>
+            <div className="w-3/4">
               <div className="flex items-center gap-12 ">
                 <div className="flex items-center gap-3">
                   <input
@@ -150,8 +152,8 @@ const Step1 = () => {
             </div>
           </div>
           <div className="flex items-center gap-12 mt-14">
-            <h3 className="font-medium text-[22px]">洽谈方式/平台：</h3>
-            <div>
+            <h3 className="font-medium text-[22px] w-1/5">洽谈方式/平台：</h3>
+            <div className="w-3/4">
               <div className="flex items-center gap-20">
                 <div className="flex items-center gap-3">
                   <input
