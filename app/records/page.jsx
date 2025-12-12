@@ -107,7 +107,7 @@ export default function RecordsPage() {
                 onClick={handleBack}
                 className="bg-[#9a9a9a] text-4xl  text-white px-20 py-6 rounded-lg"
               >
-                上一页
+                {step === steps.length - 1 ? "预览" : "上一页"}
               </button>
             )}
             {step < steps.length && (
@@ -116,7 +116,7 @@ export default function RecordsPage() {
                 onClick={handleNext}
                 className="bg-[#9a9a9a] text-4xl  text-white px-20 py-6 rounded-lg"
               >
-                下一页
+                {step === steps.length - 1 ? "保存" : "下一页"}
               </button>
             )}
           </div>
