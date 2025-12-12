@@ -46,7 +46,8 @@ export default function RecordsPage() {
 
   const onFinalSubmit = (data) => {
     console.log("Final submitted data:", data);
-    router.push('/')
+    const encoded = encodeURIComponent(JSON.stringify(data));
+  router.push(`/records/preview?data=${encoded}`);
     
   };
 
