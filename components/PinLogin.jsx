@@ -26,6 +26,18 @@ export default function PinLogin({ onSuccess,loginType }) {
     }
   };
 
+  const handleKeyDown = (e, index) => {
+    if (e.key === "Backspace") {
+      // If current input is empty → move back
+      if (!pin[index] && index > 0) {
+        const newPin = [...pin];
+        newPin[index - 1] = "";
+        setPin(newPin);
+        document.getElementById(`pin-${index - 1}`).focus();
+      }
+    }
+  };
+
   const handleSubmit = () => {
     const enteredPin = pin.join("");
 
@@ -71,9 +83,11 @@ export default function PinLogin({ onSuccess,loginType }) {
           {pin.map((digit, i) => (
             <input
               key={i}
+              
               id={`pin-${i}`}
               maxLength={1}
               value={digit}
+              onKeyDown={(e) => handleKeyDown(e, i)}
               onChange={(e) => handleChange(e.target.value, i)}
               className="w-10 h-12 border border-gray-400 text-center rounded-md text-lg"
             />

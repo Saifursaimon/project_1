@@ -24,9 +24,9 @@ const layout = ({ children }) => {
   return (
     <div>
       <AdminHeader />
-      <div className="flex items-start gap-6">
-        <div className="w-[278px] h-full">
-          <div className="flex items-center justify-between px-6 py-4 bg-[#c7c7c7] border-r-2 border-[#aaaaaa]">
+      <div className="bg-[#d9d9d9] flex  min-h-screen">
+        <div className="w-[278px] bg-white ">
+          <div className="flex items-center justify-between px-6 py-4 bg-[#c7c7c7] border-r-2 border-[#aaaaaa] w-full">
             <div className="flex items-center gap-5">
               <Image
                 src="/dashboard.png"
@@ -39,7 +39,7 @@ const layout = ({ children }) => {
             <Image src="/arrow-right.png" alt="arrow" width={8} height={5} />
           </div>
         </div>
-        <main className="bg-[#d9d9d9] flex-1">{children}</main>
+        <main className=" flex-1">{children}</main>
       </div>
     </div>
   );
