@@ -3,11 +3,15 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function PinLogin({ onSuccess }) {
+export default function PinLogin({ onSuccess,loginType }) {
   const [pin, setPin] = useState(["", "", "", "", "", ""]);
   const router = useRouter();
 
-  const correctPIN = "123456"; // 👉 Local PIN (change anytime)
+  const USERS = {
+    123456: { id: 1, name: "Admin" },
+    111111: { id: 2, name: "Sales Manager" },
+    222222: { id: 3, name: "Employee" },
+  };
 
   const handleChange = (value, index) => {
     if (value.length > 1) return;
@@ -24,17 +28,31 @@ export default function PinLogin({ onSuccess }) {
 
   const handleSubmit = () => {
     const enteredPin = pin.join("");
-    if (enteredPin === correctPIN) {
-      localStorage.setItem("record_pin_verified", "true");
-      onSuccess();
-    } else {
+
+    const user = USERS[enteredPin];
+
+    if (!user) {
       alert("密码错误，请重试！");
       setPin(["", "", "", "", "", ""]);
       document.getElementById("pin-0").focus();
+      return;
     }
+
+    
+    if (loginType === "record") {
+      localStorage.setItem("record_pin_verified", "true");
+      localStorage.setItem("record_user", JSON.stringify(user));
+    }
+
+    if (loginType === "admin") {
+      localStorage.setItem("admin_pin_verified", "true");
+      localStorage.setItem("admin_user", JSON.stringify(user));
+    }
+
+    onSuccess(user);
   };
 
-  const handleCancell = () => {
+  const handleCancel = () => {
     setPin(["", "", "", "", "", ""]);
     router.push("/");
   };
@@ -64,17 +82,17 @@ export default function PinLogin({ onSuccess }) {
 
         <div className="flex justify-center gap-6">
           <button
-            onClick={handleCancell}
+            onClick={handleCancel}
             className="w-24 h-10 bg-gray-300 rounded-md"
           >
-            取  消
+            取 消
           </button>
 
           <button
             onClick={handleSubmit}
             className="w-24 h-10 bg-gray-400 text-white rounded-md"
           >
-          解  锁
+            解 锁
           </button>
         </div>
       </div>

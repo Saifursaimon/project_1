@@ -18,6 +18,10 @@ const Header = () => {
       name: "洽谈记录",
       href: "/records",
     },
+    {
+      name: "后台",
+      href: "/admin",
+    },
   ];
 
   return (

@@ -47,8 +47,7 @@ export default function RecordsPage() {
   const onFinalSubmit = (data) => {
     console.log("Final submitted data:", data);
     const encoded = encodeURIComponent(JSON.stringify(data));
-  router.push(`/records/preview?data=${encoded}`);
-    
+    router.push(`/records/preview?data=${encoded}`);
   };
 
   useEffect(() => {
@@ -59,7 +58,7 @@ export default function RecordsPage() {
   }, []);
 
   if (!authorized) {
-    return <PinLogin onSuccess={() => setAuthorized(true)} />;
+    return <PinLogin onSuccess={() => setAuthorized(true)} loginType={'record'} />;
   }
 
   return (
@@ -96,15 +95,15 @@ export default function RecordsPage() {
 
         {/* Step content */}
         {step === 0 && <Step1 />}
-        {step === 1 && <Step2/>}
-        {step === 2 && <Step3/>}
-        {step === 3 && <Step4/>}
+        {step === 1 && <Step2 />}
+        {step === 2 && <Step3 />}
+        {step === 3 && <Step4 />}
 
         <div className="w-full flex justify-end">
           <div className="mt-5 flex gap-3">
             {step > 0 && (
               <button
-              type="button"
+                type="button"
                 onClick={handleBack}
                 className="bg-[#9a9a9a] text-4xl  text-white px-20 py-6 rounded-lg"
               >
@@ -113,7 +112,7 @@ export default function RecordsPage() {
             )}
             {step < steps.length && (
               <button
-              type="button"
+                type="button"
                 onClick={handleNext}
                 className="bg-[#9a9a9a] text-4xl  text-white px-20 py-6 rounded-lg"
               >
