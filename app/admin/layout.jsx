@@ -1,21 +1,46 @@
-'use client';
+"use client";
 import AdminHeader from "@/components/AminHeader";
 import PinLogin from "@/components/PinLogin";
-import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 const layout = ({ children }) => {
-     const [authorized, setAuthorized] = useState(false);
+  const [authorized, setAuthorized] = useState(false);
 
+  useEffect(() => {
+    const isVerified = localStorage.getItem("admin_pin_verified");
+    if (isVerified === "true") {
+      setAuthorized(true);
+    }
+  }, []);
 
-
-      if (!authorized) {
-         return <PinLogin onSuccess={() => setAuthorized(true)} loginType={'admin'} />;
-       }
+  if (!authorized) {
+    return (
+      <PinLogin onSuccess={() => setAuthorized(true)} loginType={"admin"} />
+    );
+  }
 
   return (
     <div>
       <AdminHeader />
-      <main>{children}</main>
+      <div className="flex items-start gap-6">
+        <div className="w-[278px] h-full">
+          <div className="flex items-center justify-between px-6 py-4 bg-[#c7c7c7] border-r-2 border-[#aaaaaa]">
+            <div className="flex items-center gap-5">
+              <Image
+                src="/dashboard.png"
+                alt="dashboard"
+                width={24}
+                height={24}
+              />
+              <Link href="/admin">产品管理</Link>
+            </div>
+            <Image src="/arrow-right.png" alt="arrow" width={8} height={5} />
+          </div>
+        </div>
+        <main className="bg-[#d9d9d9] flex-1">{children}</main>
+      </div>
     </div>
   );
 };

@@ -15,10 +15,10 @@ const AdminHeader = () => {
   };
 
   return (
-    <div className=" bg-[#d9d9d9] h-[122px] p-7">
+    <div className=" bg-white h-[122px] p-7">
       <div className="max-w-[1414] mx-auto flex items-center justify-between">
         {/* logo */}
-        <div className="w-[281px] h-[65px] bg-[#888888] flex items-center justify-center">
+        <div className="w-[248px] h-[65px] bg-[#888888] flex items-center justify-center">
           <p className="text-white font-medium text-center">logo 后台系统</p>
         </div>
 
