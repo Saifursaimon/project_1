@@ -1,6 +1,7 @@
 "use client";
 
 import ProjectCard from "@/components/ProjectCard";
+import RecentProjectCard from "@/components/RecentProjectCard";
 import { projects } from "@/data/project";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -136,7 +137,7 @@ export default function Page() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-7 gap-6">
           {projects.slice(0, 4).map((p) => (
-            <ProjectCard key={p.id} p={p} />
+            <RecentProjectCard key={p.id} p={p} />
           ))}
         </div>
       </div>
