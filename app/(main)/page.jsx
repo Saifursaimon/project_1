@@ -2,16 +2,37 @@
 
 import Sidebar from "@/components/Sidebar";
 import ProjectCard from "@/components/ProjectCard";
-import { projects } from "@/data/project";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 export default function Home() {
+  const [projects, setProjects] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await fetch("/api/products");
+        const data = await res.json();
+        setProjects(data);
+      } catch (err) {
+        console.error("Failed to load projects", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   const filteredProject =
     selectedCategory === "all"
       ? projects
       : projects.filter((p) => p.categoryId === selectedCategory);
+
+  if (loading) {
+    return <p className="mt-10 text-center">Loading...</p>;
+  }
 
   return (
     <div>
@@ -26,7 +47,7 @@ export default function Home() {
         <div className="flex-1">
           <div className="grid grid-cols-3 gap-5 items-start">
             {filteredProject.map((p) => (
-              <ProjectCard key={p.id} p={p} />
+              <ProjectCard key={p._id} p={p} />
             ))}
           </div>
         </div>

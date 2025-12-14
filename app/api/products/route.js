@@ -17,6 +17,16 @@ async function upload(file, folder) {
   });
 }
 
+
+export async function GET() {
+  await connectDB();
+
+  const products = await Product.find().sort({ createdAt: -1 });
+
+  return NextResponse.json(products);
+}
+
+
 export async function POST(req) {
   await connectDB();
 
