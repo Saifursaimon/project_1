@@ -23,18 +23,68 @@ export default function Page() {
   const [savedLinks, setSavedLinks] = useState([]);
 
   /* ----------  submit  ---------- */
-  const onSubmit = (data) => {
-    console.log("Form Data:", {
-      productName: data.productName,
-      productCategory: data.productCategory,
-      productDescription: data.productDescription,
-      coverImage: data.coverImage?.name || null,
-      images: imagePreviews.map((p) => p.file.name),
-      documents: pdfPreviews.map((p) => p.file.name),
-      links: savedLinks,
-    });
-    router.push("/admin");
+ const onSubmit = async (data) => {
+  const formData = new FormData();
+
+  // === text fields (map to your final format) ===
+  formData.append("name", data.productName);
+  formData.append("categoryId", data.productCategory);
+
+  // frontend-friendly category label
+  const categoryMap = {
+    display: "展示类型",
+    ecommerce: "电子商务",
+    oa: "OA",
+    inventory: "库存管理",
+    "multi-vendor": "多供应商电子商务",
+    service: "服务",
+    social: "社交媒体",
+    other: "其他",
   };
+
+  formData.append(
+    "category",
+    categoryMap[data.productCategory] || "其他"
+  );
+
+  formData.append("description", data.productDescription);
+  formData.append(
+    "date",
+    new Date().toISOString().split("T")[0]
+  );
+
+  // === files ===
+  if (data.coverImage) {
+    formData.append("coverImage", data.coverImage);
+  }
+
+  imagePreviews.forEach((img) =>
+    formData.append("images", img.file)
+  );
+
+  pdfPreviews.forEach((pdf) =>
+    formData.append("documents", pdf.file)
+  );
+
+  // === contacts / links ===
+  savedLinks.forEach((link) =>
+    formData.append("contacts", link)
+  );
+
+  // === SEND TO API ===
+  const res = await fetch("/api/products", {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!res.ok) {
+    alert("Upload failed");
+    return;
+  }
+
+  router.push("/admin");
+};
+
 
   /* ----------  cover  ---------- */
   const handleCoverChange = (e) => {
