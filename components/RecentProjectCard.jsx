@@ -4,7 +4,7 @@ import Link from "next/link";
 const RecentProjectCard = ({ p }) => {
   return (
     <Link
-      href={`/project/${p.id}`}
+      href={`/project/${p._id}`}
       className=" rounded-xl overflow-hidden
       bg-[#e0e0e0] hover:shadow-md transition"
     >

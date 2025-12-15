@@ -17,3 +17,23 @@ export async function GET(req, { params }) {
 
   return NextResponse.json(project);
 }
+
+
+
+
+export async function DELETE(req, { params }) {
+  await connectDB();
+
+  const { projectId } = await params;
+  console.log('inside api',projectId)
+
+  const product = await Product.findById(projectId);
+  if (!product) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
+ 
+  await Product.findByIdAndDelete(projectId);
+
+  return NextResponse.json({ success: true });
+}

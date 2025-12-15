@@ -10,7 +10,7 @@ const page = ({ params }) => {
   useEffect(() => {
     const fetchProject = async () => {
       const param = await params;
-      console.log(param)
+  
       try {
         const res = await fetch(`/api/products/${param.projectId}`);
         const data = await res.json();
