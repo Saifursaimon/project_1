@@ -18,9 +18,9 @@ const AdminHeader = () => {
     <div className=" bg-white h-[122px] p-7">
       <div className=" flex items-center justify-between">
         {/* logo */}
-        <div className="w-[248px] h-[65px] bg-[#888888] flex items-center justify-center">
+        <Link href='/' className="w-[248px] h-[65px] bg-[#888888] flex items-center justify-center">
           <p className="text-white font-medium text-center">logo 后台系统</p>
-        </div>
+        </Link>
 
         {/* navigation links */}
         <div className="flex items-center gap-5">
