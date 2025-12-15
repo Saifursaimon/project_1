@@ -42,28 +42,24 @@ export async function DELETE(req, { params }) {
 export async function PUT(req, { params }) {
   await connectDB();
 
-  const { projectId } = params;
-
+  const { projectId } = await params;
   const product = await Product.findById(projectId);
   if (!product) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-  const formData = await req.formData();
+  const body = await req.json();
 
-  // === TEXT FIELDS ===
-  const updates = {
-    name: formData.get("name") || product.name,
-    category: formData.get("category") || product.category,
-    categoryId: formData.get("categoryId") || product.categoryId,
-    description: formData.get("description") || product.description,
-    date: formData.get("date") || product.date,
-  };
-
-  // === CONTACT LINKS ===
-  const contacts = formData.getAll("contacts");
-  if (contacts.length > 0) updates.contacts = contacts;
-
-  // === UPDATE DB ===
-  const updated = await Product.findByIdAndUpdate(projectId, updates, { new: true });
+  const updated = await Product.findByIdAndUpdate(
+    projectId,
+    {
+      name: body.name || product.name,
+      category: body.category || product.category,
+      categoryId: body.categoryId || product.categoryId,
+      description: body.description || product.description,
+      date: body.date || product.date,
+      contacts: body.contacts || product.contacts,
+    },
+    { new: true }
+  );
 
   return NextResponse.json(updated);
 }

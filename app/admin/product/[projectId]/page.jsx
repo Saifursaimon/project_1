@@ -60,49 +60,43 @@ export default function Page({ params }) {
   }
 
   /* ----------  submit  ---------- */
-  const onSubmit = async (data) => {
-    const formData = new FormData();
-    const { projectId } = await params;
-    // === text fields (map to your final format) ===
-    formData.append("name", data.productName);
-    formData.append("categoryId", data.productCategory);
+ const onSubmit = async (data) => {
+  const { projectId } = await params;
 
-    // frontend-friendly category label
-    const categoryMap = {
-      display: "展示类型",
-      ecommerce: "电子商务",
-      oa: "OA",
-      inventory: "库存管理",
-      "multi-vendor": "多供应商电子商务",
-      service: "服务",
-      social: "社交媒体",
-      other: "其他",
-    };
-
-    formData.append("category", categoryMap[data.productCategory] || "其他");
-
-    formData.append("description", data.productDescription);
-    formData.append("date", new Date().toISOString().split("T")[0]);
-
-    // === contacts / links ===
-    savedLinks.forEach((link) => formData.append("contacts", link));
-
-    // === SEND TO API (UPDATE) ===
-    const res = await fetch(`/api/products/${projectId}`, {
-      method: "PUT",
-      body: formData,
-    });
-
-    console.log(res);
-
-    if (!res.ok) {
-      alert("Update failed");
-      return;
-    }
-
-    router.push("/admin"); // Redirect after successful update
+  const payload = {
+    name: data.productName,
+    categoryId: data.productCategory,
+    category:
+      {
+        display: "展示类型",
+        ecommerce: "电子商务",
+        oa: "OA",
+        inventory: "库存管理",
+        "multi-vendor": "多供应商电子商务",
+        service: "服务",
+        social: "社交媒体",
+        other: "其他",
+      }[data.productCategory] || "其他",
+    description: data.productDescription,
+    date: new Date().toISOString().split("T")[0],
+    contacts: savedLinks,
   };
 
+  const res = await fetch(`/api/products/${projectId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    alert("Update failed");
+    return;
+  }
+
+  router.push("/admin");
+};
   /* ----------  links  ---------- */
   const handleSaveLink = () => {
     const raw = watch("links");
