@@ -135,7 +135,7 @@ export default function Page() {
         <div className="max-w-4xl mx-auto">
           {/* header */}
           <div className="flex items-center gap-2 mb-10">
-            <span className="w-1 h-5 bg-[#919919]" />
+            <span className="w-1 h-5 bg-[#919191]" />
             <h1 className="font-semibold text-lg">产品管理</h1>
           </div>
 
